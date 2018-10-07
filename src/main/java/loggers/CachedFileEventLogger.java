@@ -18,8 +18,10 @@ public class CachedFileEventLogger extends FileEventLogger {
 
 
     private void destroy() {
-        writeEventsToFile();
-        eventList.clear();
+        if (eventList.size() != 0) {
+            writeEventsToFile();
+            eventList.clear();
+        }
     }
     @Override
     public void logEvent(Event event) {

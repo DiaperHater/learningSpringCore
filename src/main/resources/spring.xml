@@ -9,16 +9,23 @@
 
     <bean id="app" class="App">
         <constructor-arg ref="client"/>
-        <constructor-arg ref="cachedFileEventLogger"/>
+        <constructor-arg ref="combinedEventLogger"/>
+        <constructor-arg>
+            <map>
+                <entry key="INFO" value-ref="consoleEventLogger"/>
+                <entry key="ERROR" value-ref="combinedEventLogger"/>
+            </map>
+        </constructor-arg>
     </bean>
 
     <bean id="client" class="beans.Client">
         <constructor-arg value="0"/>
         <constructor-arg value="Valery Pronin"/>
+        <property name="greeting" value="Hello !"/>
     </bean>
 
 
-    <bean id="event" class="beans.Event">
+    <bean id="event" class="beans.Event" scope="prototype">
         <constructor-arg>
             <bean class="java.util.Date"/>
         </constructor-arg>
