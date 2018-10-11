@@ -37,7 +37,7 @@ public class App {
 
     public void logEvent(EventType type, Event event, String msg) {
         String processedMessage = msg.replace(String.valueOf(client.getId()), client.getFullName());
-        event.setMsg(processedMessage);
+        event.setMsg(processedMessage + client.getGreeting());
 
         EventLogger logger = loggers.get(type);
         if (logger == null) {
