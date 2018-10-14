@@ -30,6 +30,7 @@ public class App {
         app.logEvent(EventType.ERROR, (Event) context.getBean("event"), "fuck 0");
         app.logEvent(EventType.INFO, (Event) context.getBean("event"), "suck 0");
         app.logEvent(null, (Event) context.getBean("event"), "buy 0");
+
         context.registerShutdownHook();
 
     }
